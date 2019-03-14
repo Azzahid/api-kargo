@@ -72,7 +72,7 @@ describe('Bids', () => {
                             .post('/bid')
                             .send(bid)
                             .end((err, res) => {
-                                console.log(res.body);
+                                // console.log(res.body);
                                 res.should.have.status(200);
                                 res.body.should.be.a('object');
                                 done();
