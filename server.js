@@ -3,8 +3,9 @@ let app = express();
 let mongoose = require('mongoose');
 let morgan = require('morgan');
 let bodyParser = require('body-parser');
-let port = 8080;
-let book = require('./app/routes/book');
+let port = 8081;
+let job = require('./app/routes/job');
+let bid = require('./app/routes/bid');
 let config = require('config'); //we load the db location from the JSON files
 //db options
 let options = {
@@ -29,15 +30,20 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/json'}));
 
-app.get("/", (req, res) => res.json({message: "Welcome to our Bookstore!"}));
+app.get("/", (req, res) => res.json({message: "Welcome to My API!"}));
 
-app.route("/book")
-    .get(book.getBooks)
-    .post(book.postBook);
-app.route("/book/:id")
-    .get(book.getBook)
-    .delete(book.deleteBook)
-    .put(book.updateBook);
+app.route("/job")
+    .get(job.getJobs)
+    .post(job.postJobs);
+app.route("/job/sort/:attr")
+    .get(job.getSortedJobs);
+
+app.route("/bid")
+    .get(bid.getBids)
+    .post(bid.postBid);
+app.route("/bid/sort/:attr")
+    .get(bid.getSortedBids);
+
 
 
 app.listen(port);
