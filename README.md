@@ -9,4 +9,5 @@
 - Make function for validating data for bid model
 - Make route for each api
 - Make sorting function
-- Make test for each route in the api
+- Making dummy data for test
+- Making test for each route in the api
